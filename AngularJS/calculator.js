@@ -82,3 +82,7 @@ angular.module('caculator', [])
     };*/
 
 });
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
