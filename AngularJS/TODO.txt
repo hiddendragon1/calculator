@@ -1,0 +1,15 @@
+1. the property purchase value i want comma every 3 digit
+it is hard to see how much i input without comma bc we are dealling with big numbers
+don't want to miss count the zero
+
+2. closing cost you need to be able to switch from pertenage and number
+sometime people only know the number and not the acutal percentage
+
+3. where is the question mark for closing cost??
+
+4. can we have a little '$' sign instead of the enger second value here
+it looks better with $
+
+5. in bigger pocket you will be able to expand the renovation/repair cost into different categories should we do that???
+
+6. holding period. how can that be negative. i can enter negative number and that doesn't make sense
