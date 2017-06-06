@@ -24,16 +24,16 @@
 		<button class="btn-lg btn-primary btn-block" type="button" data-toggle="collapse" data-target="#step-1" aria-controls="step-1">Aquisition Costs: {{calData.aquisition()|currency}} </button>
 		<div class="collapse in" id="step-1">
 			<div class="form-group row" >
-				<label class="col-sm-2 col-lg-2 col-md-2">Property Purchase Value:</label>
+				<label class="col-sm-2 col-lg-2 col-md-2">Desired Gain:</label>
 				<div class="col-sm-4 col-lg-4 col-md-4">
-					<input class="form-control" type="number" ng-model="calData.purchaseValue" placeholder="Enter a first value here">
+					<input class="form-control" type="text" ng-model="calData.purchaseValue" placeholder="Enter a first value here">
 				</div>
 				<a href="#" data-toggle="tooltip" data-placement="right" style="color:black;" title="Something usefull for user"> <span class="glyphicon glyphicon-question-sign"></span></a>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2">Closing Cost:</label>
 				<div class="col-sm-4 input-group">
-					<input class="form-control" type="number" ng-model="calData.closingCost" placeholder="Enter a second value here">
+					<input class="form-control" min="0" type="number" ng-model="calData.closingCost" ng-change="onChange()" placeholder="Enter a second value here">
 					<span class="input-group-addon">%</span>
 				</div>
 
