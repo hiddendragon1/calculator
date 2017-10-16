@@ -1,7 +1,12 @@
 <form-container (onStepChanged)="formChange($event)">
 
-    
+ <form-step [title]="'Result'" (onComplete)="completed()">
+    <div  [@anything]="is_anything">
+        <result-page ></result-page>
+    </div>
+  </form-step>  
 
+    
   <!--Property Info Page-->
   <form-step [title]="'Property Info'" (onNext)="testClick($event)">
     <form-input-text 
@@ -119,12 +124,7 @@
     </form-input-text>
   </form-step>
 
-  <form-step [title]="'Result'" (onComplete)="completed()">
-    <div  [@anything]="is_anything">
-        <result-page ></result-page>
-    </div>
-  </form-step>  
-
+ 
 
 
 </form-container>
