@@ -1,0 +1,30 @@
+td:empty:after{
+  content: "\00a0";
+}
+
+table,td,tr {
+	line-height: 1.8;
+}
+
+.align-right {
+	text-align: right;
+	width: 135px;
+}
+
+.padded-1 {
+	padding-left: 2em;
+}
+
+.padded-bot{
+	padding-bottom: 1em;
+}
+
+.table-container {
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+
+.header-row{
+	border-bottom: 1px #1c08c7 solid;
+}

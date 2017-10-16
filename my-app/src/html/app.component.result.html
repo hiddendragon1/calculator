@@ -1,0 +1,105 @@
+<div class="row table-container">
+	<!--!-->
+
+	<div >
+		<div class="purchase">
+		<table class="tbl-l">
+			<tbody>
+				<tr>
+					<td>Purchase Price:</td>
+					<td class="align-right">{{currentProperty.purchasePrice|currency:'USD':true}}</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+
+		<div class="padded-1">
+		<table>
+			<tbody>
+				<tr>
+					<td>Purchase Closing Costs:</td>
+					<td class="align-right">{{currentProperty.closingCost|currency:'USD':true}}</td>
+				</tr>
+				<tr>
+					<td>Estimated Repairs:</td>
+					<td class="align-right">{{currentProperty.repairCost|currency:'USD':true}}</td>
+				</tr>
+				<tr>
+					<td>Total Project Cost:</td>
+					<td class="align-right">{{results.totalCost|currency:'USD':true}}</td>
+				</tr>
+				<tr>
+					<td>After Repair Value:	</td>
+					<td class="align-right">{{currentProperty.afterRepairValue|currency:'USD':true}}</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Down Payment:</td>
+					<td class="align-right">{{results.downPayment|currency:'USD':true}}</td>
+				</tr>
+				<tr>
+					<td>Loan Amount:</td>
+					<td class="align-right">{{results.loanAmount|currency:'USD':true}}</td>
+				</tr>
+				<tr>
+					<td>Loan Point:</td>
+					<td class="align-right">{{results.loanPoints|currency:'USD':true}}</td>
+				</tr>
+				<tr>
+					<td>Loan Fee:</td>
+					<td class="align-right">{{results.loanFees|currency:'USD':true}}</td>
+				</tr>
+				<tr>
+					<td>Amortized Over:</td>
+					<td class="align-right">{{currentProperty.loanTerm}} years</td>
+				</tr>
+				<tr>
+					<td>Loan Interest Rate:</td>
+					<td class="align-right">{{currentProperty.interestRate}}%</td>
+				</tr>
+				<tr>
+					<td>Monthly P&I:</td>
+					<td class="align-right">{{results.PI|currency:'USD':true}}</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Total Cash Needed By Borrower:</td>
+					<td class="align-right"><strong>{{results.totalCash|currency:'USD':true}}</strong></td>
+				</tr>
+			</tbody>
+		
+		</table>
+		</div>
+	</div>
+
+	<div>
+		<div class="projected">
+		<table class="tbl-r">
+			<tbody >
+				<tr>
+					<td class="td-width padded-bot">Monthly Income:<br><span>{{results.monthlyIncome|currency:'USD':true}}</span></td>
+					<td class="td-width padded-bot">Monthly Expense:<br><span>{{results.monthlyExpense|currency:'USD':true}}</span></td>
+					<td class="td-width padded-bot">Monthly Cashflow:<br>{{results.monthlyCashFlow| currency:'USD':true}}</td>
+					<td class="td-width padded-bot">Pro Forma Cap Rate:<br>{{999}}</td>
+				</tr>
+				<tr>
+					<td class="td-width">NOI:<br>{{999}}</td>
+					<td class="td-width">Total Cash Needed:<br>{{results.totalCash|currency:'USD':true}}</td>
+					<td class="td-width">Cash on Cash ROI<br>{{results.cashonCashROI|number:'1.0-2'}}%</td>
+					<td class="td-width">Purchase Cap Rate:<br>{{999}}</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		<graph-analysis></graph-analysis>
+	</div>
+	
+</div>
+
+<analysis-over-time></analysis-over-time>

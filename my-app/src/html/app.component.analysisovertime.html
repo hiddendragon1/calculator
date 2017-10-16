@@ -1,0 +1,69 @@
+
+<div  class="row table-container" > 
+	<table  class="" >
+		<tbody>
+			<tr class="header-row">
+				<td></td>
+				<th class="align-right">Year 1</th>
+				<th class="align-right">Year 2</th>
+				<th class="align-right">Year 3</th>
+				<th class="align-right">Year 5</th>
+				<th class="align-right">Year 10</th>
+				<th class="align-right">Year 20</th>
+				<th class="align-right">Year 30</th>
+			</tr>
+
+			<tr >
+				<td>Total Annual Income</td>
+				<td class="align-right">{{years[0].annualIncome | currency:'USD':true}}</td>
+				<td class="align-right">{{years[1].annualIncome|currency:'USD':true}}</td>
+				<td class="align-right">{{years[2].annualIncome|currency:'USD':true}}</td>
+				<td class="align-right">{{years[4].annualIncome|currency:'USD':true}}</td>
+				<td class="align-right">{{years[9].annualIncome|currency:'USD':true}}</td>
+				<td class="align-right">{{years[19].annualIncome|currency:'USD':true}}</td>
+				<td class="align-right">{{years[29].annualIncome|currency:'USD':true}}</td>
+			</tr>
+			<tr>
+				<td>Total Annual Expense</td>
+				<td class="align-right">{{years[0].annualExpense|currency:'USD':true}}</td>
+				<td class="align-right">{{years[1].annualExpense|currency:'USD':true}}</td>
+				<td class="align-right">{{years[2].annualExpense|currency:'USD':true}}</td>
+				<td class="align-right">{{years[4].annualExpense|currency:'USD':true}}</td>
+				<td class="align-right">{{years[9].annualExpense|currency:'USD':true}}</td>
+				<td class="align-right">{{years[19].annualExpense|currency:'USD':true}}</td>
+				<td class="align-right">{{years[29].annualExpense|currency:'USD':true}}</td>
+			</tr>
+			<tr>
+				<td class="padded-1">Mortgage Expense</td>
+				<td class="align-right">{{years[0].annualMortgage|currency:'USD':true}}</td>
+				<td class="align-right">{{years[1].annualMortgage|currency:'USD':true}}</td>
+				<td class="align-right">{{years[2].annualMortgage|currency:'USD':true}}</td>
+				<td class="align-right">{{years[4].annualMortgage|currency:'USD':true}}</td>
+				<td class="align-right">{{years[9].annualMortgage|currency:'USD':true}}</td>
+				<td class="align-right">{{years[19].annualMortgage|currency:'USD':true}}</td>
+				<td class="align-right">{{years[29].annualMortgage|currency:'USD':true}}</td>
+			</tr>
+			<tr>
+				<td class="padded-1">Operating Expense</td>
+				<td class="align-right">{{years[0].annualOperating|currency:'USD':true}}</td>
+				<td class="align-right">{{years[1].annualOperating|currency:'USD':true}}</td>
+				<td class="align-right">{{years[2].annualOperating|currency:'USD':true}}</td>
+				<td class="align-right">{{years[4].annualOperating|currency:'USD':true}}</td>
+				<td class="align-right">{{years[9].annualOperating|currency:'USD':true}}</td>
+				<td class="align-right">{{years[19].annualOperating|currency:'USD':true}}</td>
+				<td class="align-right">{{years[29].annualOperating|currency:'USD':true}}</td>
+			</tr>
+			<tr>
+				<td>Total Annual Cash Flow</td>
+				<td class="align-right">{{years[0].annualCashflow|currency:'USD':true}}</td>
+				<td class="align-right">{{years[1].annualCashFlow|currency:'USD':true}}</td>
+				<td class="align-right">{{years[2].annualCashFlow|currency:'USD':true}}</td>
+				<td class="align-right">{{years[4].annualCashFlow|currency:'USD':true}}</td>
+				<td class="align-right">{{years[9].annualCashFlow|currency:'USD':true}}</td>
+				<td class="align-right">{{years[19].annualCashFlow|currency:'USD':true}}</td>
+				<td class="align-right">{{years[29].annualCashFlow|currency:'USD':true}}</td>
+			</tr>
+			
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,51 @@
+.align-right {
+	text-align: right;
+	width: 40%;
+}
+
+.table-container {
+	padding-left: 60px;
+	padding-right: 50px;
+	margin: auto;
+}
+
+.padded-1 {
+	padding: 1em;
+}
+
+.padded-bot{
+	padding-bottom: 1em;
+}
+
+.purchase {
+	background: rgb(154, 177, 243);
+	font-weight: 500;
+	width: 100%;
+	padding: 1em;
+}
+
+.projected {
+	background:rgb(154, 177, 243);
+	padding: 0.8em;
+	margin-bottom: 1em;
+}
+
+.tbl-l {
+	width: 100%;
+}
+
+.tbl-r {
+	width: 100%;
+}
+
+td:empty:after{
+  content: "\00a0";
+}
+
+table,td,tr {
+	line-height: 2;
+}
+
+.td-width {
+    width: 25%;
+}

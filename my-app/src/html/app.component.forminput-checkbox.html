@@ -1,0 +1,7 @@
+<div *ngFor="let input of data" class="form-group row col-sm-{{input.class[0]}} col-lg-{{input.class[0]}} col-md-{{input.class[0]}}" >
+	<label>
+	<input type="checkbox" name={{input.name}} placement="right" ngbTooltip="{{input.tip}}" 
+		[(ngModel)] = "currentProperty[input.name]" />
+		{{input.title}}
+	</label> 
+</div>

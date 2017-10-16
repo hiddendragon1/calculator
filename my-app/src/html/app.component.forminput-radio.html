@@ -1,0 +1,16 @@
+<div *ngFor="let input of data" class="row">
+	<label 
+		class="col-sm-{{input.class[0]}} col-lg-{{input.class[0]}} col-md-{{input.class[0]}}" placement="right" ngbTooltip="{{input.tip}}">
+		{{input.title}}
+	</label> 
+</div>
+<div *ngFor="let input of data" class="row form-group">
+    <div *ngFor="let fee of currentProperty[input.name]" 
+    class="col-sm-{{input.class[1]}} col-lg-{{input.class[1]}} col-md-{{input.class[1]}}"> 
+        <label class="radio-pad">
+        <input type="radio" name="{{input.name}}" 
+        [(ngModel)]="currentProperty[input.name].value" [value]="fee.value">
+        {{fee.display}}
+        </label>
+    </div>
+</div>

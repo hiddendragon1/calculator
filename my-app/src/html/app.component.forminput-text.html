@@ -1,0 +1,17 @@
+ <div class="row">
+	<label *ngFor="let input of data" class="col-sm-{{input.class[0]}} col-lg-{{input.class[0]}} col-md-{{input.class[0]}}">
+	{{input.title}}</label> 
+</div>
+<div class="form-group row" >
+	<div *ngFor="let input of data" class="col-lg-{{input.class[1]}}">
+
+		<input *ngIf="checkName(input.name); else input_2" class="form-control" type="text" name={{input.name}} placement="right" ngbTooltip="{{input.tip}}" 
+		[(ngModel)] = "currentProperty[input.name]"
+		placeholder=""/>
+		<ng-template #input_2>
+			<input class="form-control" type="text" name={{input.name}} placement="right" ngbTooltip="{{input.tip}}" 
+			[(ngModel)] = "currentProperty[input.name][input.title]"
+			placeholder=""/> 
+		</ng-template>
+	</div>
+</div>
