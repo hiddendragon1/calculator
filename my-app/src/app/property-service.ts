@@ -96,17 +96,20 @@ export class PropertyService {
     var tvAnnualIncome=  this.result.monthlyIncome * 12;
     var tvAnnualExpense= this.result.monthlyExpense * 12;
     var tvAnnualCashFlow= this.result.monthlyCashFlow * 12;
-
-
-    //calculate cash on cash ROI from annual cash flow 
-    this.result.cashonCashROI = this.calCashonCashROI(tvAnnualCashFlow);
+    var tvCashROI = this.result.cashonCashROI;
     
     //set data for the first year
     var data: any =[{annualIncome: tvAnnualIncome, 
                     annualExpense: tvAnnualExpense,
                     annualMortgage: tvMortgageExpense,
                     annualOperating: tvOperatingExpense,
-                    annualCashflow: tvAnnualCashFlow
+                    annualCashflow: tvAnnualCashFlow,
+                    cashROI: tvCashROI,
+                    propertyValue: 0,
+                    equity: 0,
+                    loanBalance: 0,
+                    totalProfit:0,
+                    totalReturn:0
                      }];
     
     //loop to loan term to calculate every year
@@ -115,11 +118,14 @@ export class PropertyService {
       tvAnnualExpense = tvOperatingExpense + tvMortgageExpense;
       tvAnnualIncome += tvAnnualIncome * (+PROPERTY.futureAssumption['Annual Income Growth']/100);
       tvAnnualCashFlow = tvAnnualIncome - tvAnnualExpense;
+      tvCashROI = this.calCashonCashROI(tvAnnualCashFlow);
+
       var temp = {annualIncome:  tvAnnualIncome,
                   annualExpense: tvAnnualExpense,
                   annualMortgage: tvMortgageExpense,
                   annualOperating: tvOperatingExpense,
-                  annualCashFlow: tvAnnualCashFlow
+                  annualCashFlow: tvAnnualCashFlow,
+                  cashROI: tvCashROI,
                   };
 
       //push yearly data
@@ -140,5 +146,6 @@ export class PropertyService {
     this.result.monthlyIncome = this.calMonthlyIncome();
     this.result.monthlyExpense = this.calMonthlyOperating() + this.result.PI;
     this.result.monthlyCashFlow = this.result.monthlyIncome - this.result.monthlyExpense;
+    this.result.cashonCashROI = this.calCashonCashROI(this.result.monthlyCashFlow * 12);
   }
 }
