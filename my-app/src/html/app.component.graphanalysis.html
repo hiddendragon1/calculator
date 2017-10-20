@@ -1,28 +1,57 @@
 <ngb-tabset class="tab-width" >
   <ngb-tab title="Expenses">
     <ng-template ngbTabContent >
-      <ngx-charts-advanced-pie-chart
+     
+    <strong>Total Operating expenses: {{propertyService.calMonthlyOperating()}}</strong>
+    <br>
+    <strong>Mortgage expenses: {{results.PI}}</strong>
+    <ngx-charts-pie-grid
       [view]="view"
       [scheme]="colorScheme"
       [results]="single"
-      [gradient]="gradient"
       (select)="onSelect($event)">
-    </ngx-charts-advanced-pie-chart>
+    </ngx-charts-pie-grid>
+  
   
     </ng-template>
   </ngb-tab>
   <ngb-tab title="Income">
     
     <ng-template ngbTabContent>
-      income calculation here
+      <ngx-charts-pie-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="single"
+      [legend]="showLegend"
+      [explodeSlices]="explodeSlices"
+      [labels]="showLabels"
+      [doughnut]="doughnut"
+      [gradient]="gradient"
+      (select)="onSelect($event)">
+    </ngx-charts-pie-chart>
     </ng-template>
   </ngb-tab>
+  <!--50% Income Tab-->
   <ngb-tab title="50% Rule">
     <ng-template ngbTabContent>
-      <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
-      master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
-      dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum
-      iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+      <table>
+        <tr>
+          <td>Total Monthly Income:</td>
+          <td>{{results.monthlyIncome}}</td>
+        </tr>
+        <tr>
+          <td>50% of Monthly Expenses: </td>
+          <td>{{results.monthlyExpense / 2}}</td>
+        </tr>
+        <tr>
+          <td>Monthly P&I: </td>
+          <td>{{results.PI}}</td>
+        </tr>
+        <tr>
+          <td>Monthly Cashflow using 50% Rule</td>
+          <td>{{ results.monthlyIncome - results.PI + results.monthlyExpense/2}}</td>
+        </tr>      
+      </table>
     </ng-template>
   </ngb-tab>
 </ngb-tabset>
