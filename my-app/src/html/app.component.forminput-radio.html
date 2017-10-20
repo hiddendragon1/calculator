@@ -5,7 +5,7 @@
 	</label> 
 </div>
 <div *ngFor="let input of data" class="row form-group">
-    <div *ngFor="let fee of currentProperty[input.name]" 
+    <div *ngFor="let fee of currentProperty[input.name]; let i=index" 
     class="col-sm-{{input.class[1]}} col-lg-{{input.class[1]}} col-md-{{input.class[1]}}"> 
         <label class="radio-pad">
         <input type="radio" name="{{input.name}}" 

@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } 	from '@angular/core';
 import { NgbModule } 	from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { PropertyService } from './property-service';
 
@@ -28,7 +28,7 @@ import { GraphAnalysisComponent } from './app.component.graphanalysis'
     AnalysisOverTimeComponent,GraphAnalysisComponent
   ],
   imports: [
-    BrowserModule,NgbModule.forRoot(),FormsModule,BrowserAnimationsModule
+    BrowserModule,NgbModule.forRoot(),FormsModule,BrowserAnimationsModule,NgxChartsModule
   ],
   providers: [PropertyService],
   bootstrap: [AppComponent]

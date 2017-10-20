@@ -19,6 +19,10 @@ export class GraphAnalysisComponent {
 	private currentProperty: Property;
 	private years: any;
 
+	view: any[];
+	single: any[];
+	colorScheme: any;
+
 	constructor(private propertyService: PropertyService) { }
 
 	
@@ -29,8 +33,26 @@ export class GraphAnalysisComponent {
 
 	ngOnInit(): void {
 		this.getProperty();
+		this.view = [700, 300];
 		console.log(this.years);
+		this.colorScheme = {domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']};
+		var data:any= [{"name" : "anything",
+			      		"value": 100}];
+
+		for ( var value in this.currentProperty.fixedExpenses ){
+	      var temp  =  {"name" : value,
+	      				"value": this.currentProperty.fixedExpenses[value]};
+	      data.push(temp);
+	    console.log(data);
+	    };
+	    this.single = data;
+
+		
 	}
+
+	 onSelect(event) {
+    console.log(event);
+  }
 
 	
 }

@@ -1,7 +1,14 @@
 <ngb-tabset class="tab-width" >
   <ngb-tab title="Expenses">
     <ng-template ngbTabContent >
-      Expense calcuation here
+      <ngx-charts-advanced-pie-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="single"
+      [gradient]="gradient"
+      (select)="onSelect($event)">
+    </ngx-charts-advanced-pie-chart>
+  
     </ng-template>
   </ngb-tab>
   <ngb-tab title="Income">

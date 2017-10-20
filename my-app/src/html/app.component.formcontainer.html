@@ -3,7 +3,7 @@
     <div class="card-header">
       <ul class="nav nav-justified">
         <li class="nav-item" *ngFor="let step of steps" [ngClass]="{'active': step.isActive, 'enabled': !step.isDisabled, 'disabled': step.isDisabled}">
-          <a (click)="goToStep(step)">{{step.title}}</a>
+          <a class="step-links" (click)="goToStep(step)">{{step.title}}</a>
         </li>
       </ul>
     </div>

@@ -17,10 +17,11 @@ export class PropertyService {
     PROPERTY.fixedExpenses['Electricity'] =50;
     PROPERTY.fixedExpenses['Water Sewer'] =50;
     PROPERTY.fixedExpenses['PMI'] =20;
-    PROPERTY.fixedExpenses['Water Sewer'] =100;
+    PROPERTY.fixedExpenses['Property Taxes'] =100;
     PROPERTY.fixedExpenses['Garbage'] =20;
     PROPERTY.fixedExpenses['HOAs'] =100;
     PROPERTY.fixedExpenses['Monthly Insurance'] =20;
+
     return PROPERTY;
   }
 
