@@ -1,4 +1,4 @@
-<div  class="row table-container" > 
+<div  class="row year-container" > 
 	<table  class="" >
 		<tbody>
 			<tr class="header-row">
@@ -14,55 +14,41 @@
 
 			<tr >
 				<td>Total Annual Income</td>
-				<td class="align-right">{{results.years[0].annualIncome | currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[1].annualIncome|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[2].annualIncome|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[4].annualIncome|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[9].annualIncome|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[19].annualIncome|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[29].annualIncome|currency:'USD':true}}</td>
+				<td class="align-right" *ngFor="let year of results.years">
+					{{year.annualIncome | currency:'USD':true}}
+				</td>
 			</tr>
 			<tr>
-				<td>Total Annual Expense</td>
-				<td class="align-right">{{results.years[0].annualExpense|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[1].annualExpense|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[2].annualExpense|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[4].annualExpense|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[9].annualExpense|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[19].annualExpense|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[29].annualExpense|currency:'USD':true}}</td>
+				<td>Total Annual Expenses</td>
+				<td class="align-right" *ngFor="let year of results.years">
+					{{year.annualExpense|currency:'USD':true}}
+				</td>
 			</tr>
 			<tr>
-				<td class="padded-1">Mortgage Expense</td>
-				<td class="align-right">{{results.years[0].annualMortgage|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[1].annualMortgage|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[2].annualMortgage|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[4].annualMortgage|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[9].annualMortgage|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[19].annualMortgage|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[29].annualMortgage|currency:'USD':true}}</td>
+				<td class="padded-1">Mortgage Payment</td>
+				<td class="align-right" *ngFor="let year of results.years">
+					{{year.annualMortgage|currency:'USD':true}}
+				</td>
 			</tr>
 			<tr>
-				<td class="padded-1">Operating Expense</td>
-				<td class="align-right">{{results.years[0].annualOperating|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[1].annualOperating|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[2].annualOperating|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[4].annualOperating|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[9].annualOperating|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[19].annualOperating|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[29].annualOperating|currency:'USD':true}}</td>
+				<td class="padded-1">Operating Expenses</td>
+				<td class="align-right" *ngFor="let year of results.years">
+					{{year.annualOperating|currency:'USD':true}}
+				</td>
+
 			</tr>
 			<tr>
 				<td>Total Annual Cash Flow</td>
-				<td class="align-right">{{results.years[0].annualCashflow|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[1].annualCashFlow|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[2].annualCashFlow|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[4].annualCashFlow|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[9].annualCashFlow|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[19].annualCashFlow|currency:'USD':true}}</td>
-				<td class="align-right">{{results.years[29].annualCashFlow|currency:'USD':true}}</td>
+				<td class="align-right" *ngFor="let year of results.years">
+					{{year.annualCashflow|currency:'USD':true}}
+				</td>
 			</tr>
-			
+			<tr>
+				<td>Cash on Cash ROI</td>
+				<td class="align-right" *ngFor="let year of results.years">
+					{{year.cashROI|percent:'1.0-2'}}
+				</td>
+			</tr>
 		</tbody>
 	</table>
 </div>

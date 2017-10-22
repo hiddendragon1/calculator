@@ -1,5 +1,5 @@
-td:empty:after{
-  content: "\00a0";
+body {
+	margin-top: 10px;
 }
 
 table,td,tr {
@@ -12,16 +12,16 @@ table,td,tr {
 }
 
 .padded-1 {
-	padding-left: 2em;
+	padding-left: 1em;
 }
 
 .padded-bot{
 	padding-bottom: 1em;
 }
 
-.table-container {
-	padding-left: 50px;
-	padding-right: 50px;
+.year-container {
+
+	margin:25px;
 }
 
 
