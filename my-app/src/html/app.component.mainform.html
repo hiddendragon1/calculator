@@ -1,7 +1,7 @@
 <form-container (onStepChanged)="formChange($event)">
 
  <form-step [title]="'Result'" (onComplete)="completed()">
-    <div  [@anything]="is_anything">
+    <div  >
         <result-page ></result-page>
     </div>
   </form-step>  
@@ -11,22 +11,22 @@
   <form-step [title]="'Property Info'" (onNext)="testClick($event)">
     <form-input-text 
       [data]= "[ 
-      { title:'Property Name:', name:'name', class:[12,4], tip:'name'}]">
+      { title:'Property Name:', name:'name', class:[4,3,4], tip:'name'}]">
     </form-input-text>
     <form-input-text 
       [data]= "[
-        { title:'Property Address:', name:'address', class:[12,4], tip:'address'}]">
+        { title:'Property Address:', name:'address', class:[4,3,4], tip:'address'}]">
     </form-input-text>
     <form-input-text 
       [data]= "[
-        { title:'Property City:', name:'city', class:[3,3], tip:'city' },
-        { title:'Property State:', name:'state', class:[2,2], tip:'state'  },
-        { title:'Property Zip:', name:'zip', class:[3,2], tip:'zip'  }]">
+        { title:'Property City:', name:'city', class:[4,3,2], tip:'city' },
+        { title:'Property State:', name:'state', class:[4,3,2], tip:'state'  },
+        { title:'Property Zip:', name:'zip', class:[4,3,2], tip:'zip'  }]">
     </form-input-text>
     <form-input-text
       [data]= "[
-        { title:'Property Taxes:', name:'propertyTax', class:[2,2], tip:'tax'},
-        { title:'MLS Number:', name:'MLS', class:[2,2], tip:'mls'  }]">
+        { title:'Property Taxes:', name:'propertyTax', class:[4,3,2], tip:'tax'},
+        { title:'MLS Number:', name:'MLS', class:[4,3,2], tip:'mls'  }]">
     </form-input-text>
   </form-step>
 
@@ -34,19 +34,19 @@
   <form-step [title]="'Purchase Info'"  (onNext)="testClick($event)">
     <form-input-text 
       [data]= "[
-        { title: 'Purchase Price:', name:'purchasePrice', class:[3,2], tip:'price' }]">
+        { title: 'Purchase Price:', name:'purchasePrice', class:[4,3,2], tip:'price' }]">
     </form-input-text>
     <form-input-text 
       [data]= "[
-        { title: 'After Repair Value:', name:'afterRepairValue', class:[3,2], tip:'value' }]">
+        { title: 'After Repair Value:', name:'afterRepairValue', class:[4,3,2], tip:'value' }]">
     </form-input-text>
     <form-input-text 
       [data]= "[
-        { title: 'Purchase Closing Cost:', name:'closingCost', class:[3,2], tip:'closing' }]">
+        { title: 'Purchase Closing Cost:', name:'closingCost', class:[4,3,2], tip:'closing' }]">
     </form-input-text>
     <form-input-text 
       [data]= "[
-        { title: 'Estimated Repair Cost:', name:'repairCost', class:[3,2], tip:'repair' }]">    
+        { title: 'Estimated Repair Cost:', name:'repairCost', class:[4,3,2], tip:'repair' }]">    
     </form-input-text>
 
     <br>
@@ -55,72 +55,73 @@
 
     <form-input-checkbox
      [data]= "[
-          { title: 'Cash Purchase?', name:'cash', class:[3,2], tip:'loan' }]"> 
+          { title: 'Cash Purchase?', name:'cash', class:[4,3,2], tip:'loan' }]"> 
     </form-input-checkbox>
 
     <div *ngIf="!currentProperty.cash">
       <form-input-text
         [data]= "[
-          { title: 'Enter Loan Amount:', name:'loanAmount', class:[3,2], tip:'loan' }]">
+          { title: 'Enter Loan Amount:', name:'loanAmount', class:[4,3,2], tip:'loan' }]">
       </form-input-text>
 
       <form-input-text
         [data]= "[
-          { title: 'Loan Interest Rate(%)', name:'interestRate', class:[3,1], tip:'interest' }]">
+          { title: 'Loan Interest Rate(%)', name:'interestRate', class:[4,3,2], tip:'interest' }]">
       </form-input-text>
 
       <form-input-text
         [data]= "[
-          { title: 'Points charged by lender', name:'loanPoints', class:[3,1], tip:'interest' }]">
+          { title: 'Points charged by lender', name:'loanPoints', class:[5,4,3], tip:'interest' },
+           { title: 'Other fees from lender', name:'otherFee', class:[5,4,2], tip:'other' }]">
       </form-input-text>
 
       <form-input-radio
-        [data]= "[{ title:'Loan Fees & Points', name:'loanFee', class:[3,4], tip:'fee'}]">
+        [data]= "[{ title:'Loan Fees & Points', name:'loanFee', class:[5,4,4], tip:'fee'}]">
       </form-input-radio>
 
       <form-input-radio
-        [data]= "[{ title:'Interest Only?', name:'interestOnly', class:[3,2], tip:'interest'}]">
+        [data]= "[{ title:'Interest Only?', name:'interestOnly', class:[4,2 ,2], tip:'interest'}]">
       </form-input-radio>
     </div>
   </form-step>
 
 <!--Rental Info Page -->
-  <form-step [title]="'Rental Info'" (onNext)="testClick(this)" >
+  <form-step [title]="'Rental Info'" (onNext)="testClick(this)" (onComplete)="completed()" >
     <form-input-text
-        [data]= "[{ title: 'Total Monthly Rent', name:'totalMonthlyRent', class:[12,2], tip:'rent'}]">
+        [data]= "[{ title: 'Total Monthly Rent', name:'totalMonthlyRent', class:[4,3,4], tip:'rent'}]">
     </form-input-text>
     <form-input-text
-        [data]= "[{ title: 'Other Monthly Income', name:'otherMonthlyIncome', class:[12,2], tip:'other'}]">
+        [data]= "[{ title: 'Other Monthly Income', name:'otherMonthlyIncome', class:[4,3,4], tip:'other'}]">
     </form-input-text>
     <h4>Fixed Expenses</h4>
     <form-input-text
-      [data]= "[{ title:'Electricity', name:'fixedExpenses', class:[2,2], tip:'city'},
-        { title:'Water Sewer', name:'fixedExpenses', class:[2,2], tip:'state'},
-        { title:'PMI', name:'fixedExpenses', class:[2,2], tip:'PMI'},
-        { title:'Garbage', name:'fixedExpenses', class:[2,2], tip:'garbage'}]">
+      [data]= "[{ title:'Electricity', name:'fixedExpenses', class:[4,3,2], tip:'city'},
+        { title:'Water Sewer', name:'fixedExpenses', class:[4,3,2], tip:'state'},
+        { title:'PMI', name:'fixedExpenses', class:[4,3,2], tip:'PMI'},
+        { title:'Garbage', name:'fixedExpenses', class:[4,3,2], tip:'garbage'}]">
     </form-input-text>
     <form-input-text
-      [data]="[{ title:'HOAs', name:'fixedExpenses', class:[2,2], tip:'HOAs'},
-        { title:'Monthly Insurance', name:'fixedExpenses', class:[2,2], tip:'insurance'},
-        { title:'Property Taxes', name:'fixedExpenses', class:[2,2], tip:'taxes'},
-        { title:'Other Expenses', name:'fixedExpenses', class:[2,2], tip:'zip'}]">
+      [data]="[{ title:'HOAs', name:'fixedExpenses', class:[4,3,2], tip:'HOAs'},
+        { title:'Monthly Insurance', name:'fixedExpenses', class:[4,3,2], tip:'insurance'},
+        { title:'Property Taxes', name:'fixedExpenses', class:[4,3,2], tip:'taxes'},
+        { title:'Other Expenses', name:'fixedExpenses', class:[4,3,2], tip:'zip'}]">
     </form-input-text>
 
     <h4>Variable Expenses in <strong>%</strong></h4>
     <form-input-text
-      [data]="[{ title:'Vacancy', name:'variableExpenses', class:[2,2], tip:'HOAs'},
-        { title:'Repair and Maintainance', name:'variableExpenses', class:[2,2], tip:'insurance'},
-        { title:'Capital Expenditures', name:'variableExpenses', class:[2,2], tip:'taxes'},
-        { title:'Property Management', name:'variableExpenses', class:[2,2], tip:'zip'}]">
+      [data]="[{ title:'Vacancy', name:'variableExpenses', class:[4,3,2], tip:'HOAs'},
+        { title:'Repair Maintainance', name:'variableExpenses', class:[4,3,2], tip:'insurance'},
+        { title:'Capital Expenditures', name:'variableExpenses', class:[4,3,2], tip:'taxes'},
+        { title:'Property Management', name:'variableExpenses', class:[4,3,2], tip:'zip'}]">
     </form-input-text>
 
 
     <h4>Future Assumption in <strong>%</strong></h4>
     <form-input-text
-      [data]="[{ title:'Annual Income Growth', name:'futureAssumption', class:[2,2], tip:'HOAs'},
-        { title:'Annual PV Growth', name:'futureAssumption', class:[2,2], tip:'insurance'},
-        { title:'Annual Expenses Growth', name:'futureAssumption', class:[2,2], tip:'taxes'},
-        { title:'Sales Expenses', name:'futureAssumption', class:[2,2], tip:'zip'}]">
+      [data]="[{ title:'Income Growth', name:'futureAssumption', class:[4,3,2], tip:'HOAs'},
+        { title:'PV Growth', name:'futureAssumption', class:[4,3,2], tip:'insurance'},
+        { title:'Expenses Growth', name:'futureAssumption', class:[4,3,2], tip:'taxes'},
+        { title:'Sales Expenses', name:'futureAssumption', class:[4,3,2], tip:'zip'}]">
     </form-input-text>
   </form-step>
 

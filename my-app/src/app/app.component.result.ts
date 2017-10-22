@@ -17,6 +17,7 @@ export class ResultPageComponent {
 	@Input() data: any[];
 	private currentProperty: Property;
 	private results: any;
+	
 
 	constructor(private propertyService: PropertyService) { }
 
@@ -29,11 +30,4 @@ export class ResultPageComponent {
 		this.getProperty();
 	}
 
-	getNOI(): number {
-		return 9999;
-	}
-
-	getProForma(): number {
-		return 9999;
-	}
 }

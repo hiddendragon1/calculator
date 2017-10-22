@@ -17,19 +17,18 @@ export class AnalysisOverTimeComponent {
 
 	@Input() data: any[];
 	private currentProperty: Property;
-	private years: any;
+	private results: any;
 
 	constructor(private propertyService: PropertyService) { }
 
 	
 	getProperty(): void {
 		this.currentProperty = this.propertyService.getProperty();
-		this.years = this.propertyService.getYears();
+		this.results = this.propertyService.getResults();
 	}
 
 	ngOnInit(): void {
 		this.getProperty();
-		console.log(this.years);
 	}
 
 	

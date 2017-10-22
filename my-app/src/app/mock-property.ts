@@ -22,6 +22,7 @@ export var PROPERTY: Property = {
   interestRate:4.75,
   loanTerm: 30,
   totalCost:0,
+  otherFee:0,
 
   interestOnly: [
     { value: 'Y', display: 'Yes' },

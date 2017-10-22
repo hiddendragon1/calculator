@@ -6,14 +6,15 @@ import { PROPERTY } from './mock-property';
 @Injectable()
 export class PropertyService {
    
-  years: Array<any>;
+  private year: any={};
   private result: any = {};
+
   
   getProperty(): Property {
 
-    PROPERTY.futureAssumption['Annual Expenses Growth'] =2;
-    PROPERTY.futureAssumption['Annual Income Growth'] =2;
-    PROPERTY.futureAssumption['Annual PV Growth'] =2;
+    PROPERTY.futureAssumption['Expenses Growth'] =2;
+    PROPERTY.futureAssumption['Income Growth'] =2;
+    PROPERTY.futureAssumption['PV Growth'] =2;
     PROPERTY.fixedExpenses['Electricity'] =50;
     PROPERTY.fixedExpenses['Water Sewer'] =50;
     PROPERTY.fixedExpenses['PMI'] =20;
@@ -30,12 +31,6 @@ export class PropertyService {
     return this.result;
   }
 
-  getYears(): any {
-    this.years = this.calYears();
-    return this.years;
-  }
-
-
   ngOnInit(): void {
 
 
@@ -46,11 +41,11 @@ export class PropertyService {
   }
 
   calDownPayment(): number {
-    return +PROPERTY.purchasePrice * (+PROPERTY.downPayment/100);
+      return +PROPERTY.purchasePrice * (+PROPERTY.downPayment/100);
   }
 
   calLoanAmount(): number { 
-    return  +PROPERTY.purchasePrice - this.result.downPayment;
+      return  +PROPERTY.purchasePrice - this.result.downPayment;
   }
 
   //calculate for monthly mortgage
@@ -99,7 +94,7 @@ export class PropertyService {
     var tvCashROI = this.result.cashonCashROI;
     
     //set data for the first year
-    var data: any =[{annualIncome: tvAnnualIncome, 
+    var data:any =[{annualIncome: tvAnnualIncome, 
                     annualExpense: tvAnnualExpense,
                     annualMortgage: tvMortgageExpense,
                     annualOperating: tvOperatingExpense,
@@ -110,13 +105,13 @@ export class PropertyService {
                     loanBalance: 0,
                     totalProfit:0,
                     totalReturn:0
-                     }];
+              }];
     
     //loop to loan term to calculate every year
-    for ( var i=1;i< +PROPERTY.loanTerm; i++) {
-      tvOperatingExpense += tvOperatingExpense * (+PROPERTY.futureAssumption['Annual Expenses Growth']/100);
+    for ( var i=1; i< 30; i++) {
+      tvOperatingExpense += tvOperatingExpense * (+PROPERTY.futureAssumption['Expenses Growth']/100);
       tvAnnualExpense = tvOperatingExpense + tvMortgageExpense;
-      tvAnnualIncome += tvAnnualIncome * (+PROPERTY.futureAssumption['Annual Income Growth']/100);
+      tvAnnualIncome += tvAnnualIncome * (+PROPERTY.futureAssumption['Income Growth']/100);
       tvAnnualCashFlow = tvAnnualIncome - tvAnnualExpense;
       tvCashROI = this.calCashonCashROI(tvAnnualCashFlow);
 
@@ -126,26 +121,50 @@ export class PropertyService {
                   annualOperating: tvOperatingExpense,
                   annualCashFlow: tvAnnualCashFlow,
                   cashROI: tvCashROI,
+                  propertyValue: 0,
+                  equity: 0,
+                  loanBalance: 0,
+                  totalProfit:0,
+                  totalReturn:0
+
                   };
 
       //push yearly data
       data.push(temp);
     }
     
-    console.log(data);
-    return data;
+  return data;
+
   }
 
   calResults() : void {
-    this.result.totalCost = this.calTotalCost();
-    this.result.downPayment = this.calDownPayment();
-    this.result.loanAmount = this.calLoanAmount();
-    this.result.loanPoints = this.calLoanPoints();
+    //if cash purchase then skip calculation and use default
+    if(PROPERTY.cash) {
+      this.result.downPayment = +PROPERTY.purchasePrice;
+      this.result.loanAmount = 0;
+      this.result.loanPoints = 0;
+      this.result.PI = 0;
+      PROPERTY.loanTerm=0;
+    } 
+    //else calculate loan detail
+    else {
+      this.result.downPayment = this.calDownPayment();
+      this.result.loanAmount = this.calLoanAmount();
+      this.result.loanPoints = this.calLoanPoints();
+      this.result.PI = this.calPI();
+    }
+    //calculate other detail
     this.result.totalCash = this.calTotalCashNeed();
-    this.result.PI = this.calPI();
+    this.result.totalCost = this.calTotalCost();
     this.result.monthlyIncome = this.calMonthlyIncome();
     this.result.monthlyExpense = this.calMonthlyOperating() + this.result.PI;
     this.result.monthlyCashFlow = this.result.monthlyIncome - this.result.monthlyExpense;
     this.result.cashonCashROI = this.calCashonCashROI(this.result.monthlyCashFlow * 12);
+    this.result.years = this.calYears();
+    //if wrap fee into loan
+    if(PROPERTY.loanFee.value == 'W')
+      this.result.loanAmount += this.result.loanPoints;
+
+    console.log(this.result);
   }
 }

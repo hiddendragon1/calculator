@@ -61,7 +61,7 @@ export class MainFormComponent {
 		console.log("completed form",event);
 		this.is_anything = 'a';
 		this.isCompleted = true;
-		
+		this.propertyService.getResults();
 	}
 
 }

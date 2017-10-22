@@ -22,6 +22,7 @@ export class Property {
   loanTerm: number;
   loanPoints: number;
   loanFee: any;
+  otherFee: number;
   interestOnly: any;
 
   //property info
