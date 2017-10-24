@@ -2,9 +2,9 @@
   <ngb-tab title="Expenses">
     <ng-template ngbTabContent >
      
-    <strong>Total Operating expenses: {{propertyService.calMonthlyOperating()}}</strong>
+    <strong>Total Operating expenses: {{results.monthlyOperating|currency:'USD':true}}</strong>
     <br>
-    <strong>Mortgage expenses: {{results.PI}}</strong>
+    <strong>Mortgage expenses: {{results.PI|currency:'USD':true}}</strong>
     <ngx-charts-pie-grid
       [view]="view"
       [scheme]="colorScheme"
@@ -16,12 +16,13 @@
     </ng-template>
   </ngb-tab>
   <ngb-tab title="Income">
-    
     <ng-template ngbTabContent>
+      <strong>Monthly Income: {{results.monthlyIncome |currency:'USD':true}}</strong>
+    <br>
       <ngx-charts-pie-chart
       [view]="view"
       [scheme]="colorScheme"
-      [results]="single"
+      [results]="single2"
       [legend]="showLegend"
       [explodeSlices]="explodeSlices"
       [labels]="showLabels"
@@ -34,22 +35,26 @@
   <!--50% Income Tab-->
   <ngb-tab title="50% Rule">
     <ng-template ngbTabContent>
-      <table>
+      <table class="rule50">
         <tr>
           <td>Total Monthly Income:</td>
-          <td>{{results.monthlyIncome}}</td>
+          <td>{{results.monthlyIncome|currency:'USD':true}}</td>
         </tr>
         <tr>
           <td>50% of Monthly Expenses: </td>
-          <td>{{results.monthlyExpense / 2}}</td>
+          <td>{{results.monthlyExpense / 2|currency:'USD':true}}</td>
         </tr>
         <tr>
           <td>Monthly P&I: </td>
-          <td>{{results.PI}}</td>
+          <td>{{results.PI|currency:'USD':true}}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <td>Monthly Cashflow using 50% Rule</td>
-          <td>{{ results.monthlyIncome - results.PI + results.monthlyExpense/2}}</td>
+          <td>{{ results.monthlyIncome - results.PI + results.monthlyExpense/2|currency:'USD':true}}</td>
         </tr>      
       </table>
     </ng-template>

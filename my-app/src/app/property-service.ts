@@ -86,7 +86,7 @@ export class PropertyService {
 
   calYears() : any {
     //initialize data with the first year
-    var tvOperatingExpense = this.calMonthlyOperating() * 12;
+    var tvOperatingExpense = this.result.monthlyOperating * 12;
     var tvMortgageExpense = this.result.PI * 12;
     var tvAnnualIncome=  this.result.monthlyIncome * 12;
     var tvAnnualExpense= this.result.monthlyExpense * 12;
@@ -119,15 +119,14 @@ export class PropertyService {
                   annualExpense: tvAnnualExpense,
                   annualMortgage: tvMortgageExpense,
                   annualOperating: tvOperatingExpense,
-                  annualCashFlow: tvAnnualCashFlow,
+                  annualCashflow: tvAnnualCashFlow,
                   cashROI: tvCashROI,
                   propertyValue: 0,
                   equity: 0,
                   loanBalance: 0,
                   totalProfit:0,
                   totalReturn:0
-
-                  };
+                };
 
       //push yearly data
       data.push(temp);
@@ -144,7 +143,6 @@ export class PropertyService {
       this.result.loanAmount = 0;
       this.result.loanPoints = 0;
       this.result.PI = 0;
-      PROPERTY.loanTerm=0;
     } 
     //else calculate loan detail
     else {
@@ -157,13 +155,21 @@ export class PropertyService {
     this.result.totalCash = this.calTotalCashNeed();
     this.result.totalCost = this.calTotalCost();
     this.result.monthlyIncome = this.calMonthlyIncome();
-    this.result.monthlyExpense = this.calMonthlyOperating() + this.result.PI;
+    this.result.monthlyOperating = this.calMonthlyOperating();
+    this.result.monthlyExpense = this.result.monthlyOperating + this.result.PI;
     this.result.monthlyCashFlow = this.result.monthlyIncome - this.result.monthlyExpense;
     this.result.cashonCashROI = this.calCashonCashROI(this.result.monthlyCashFlow * 12);
-    this.result.years = this.calYears();
+    this.result.NOI = this.result.monthlyIncome - this.result.monthlyOperating;
+    //filter out the years we want to display
+    this.result.years = this.calYears().filter( function(value,index){
+      return [0,1,2,4,9,19,29].includes(index);
+    });;
+
     //if wrap fee into loan
-    if(PROPERTY.loanFee.value == 'W')
+    if(PROPERTY.loanFee.value == 'W'){
       this.result.loanAmount += this.result.loanPoints;
+      this.result.totalCash -= this.result.loanPoints;
+    }
 
     console.log(this.result);
   }

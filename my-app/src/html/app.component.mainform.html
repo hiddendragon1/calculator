@@ -1,6 +1,6 @@
 <form-container (onStepChanged)="formChange($event)">
 
- <form-step [title]="'Result'" (onComplete)="completed()">
+  <form-step [title]="'Result'" (onComplete)="completed()">
     <div  >
         <result-page ></result-page>
     </div>
@@ -10,12 +10,10 @@
   <!--Property Info Page-->
   <form-step [title]="'Property Info'" (onNext)="testClick($event)">
     <form-input-text 
-      [data]= "[ 
-      { title:'Property Name:', name:'name', class:[4,3,4], tip:'name'}]">
+      [data]= "[{ title:'Property Name:', name:'name', class:[4,3,4], tip:'name'}]">
     </form-input-text>
     <form-input-text 
-      [data]= "[
-        { title:'Property Address:', name:'address', class:[4,3,4], tip:'address'}]">
+      [data]= "[{title:'Property Address:', name:'address', class:[4,3,4], tip:'address'}]">
     </form-input-text>
     <form-input-text 
       [data]= "[
@@ -54,8 +52,7 @@
     <br>
 
     <form-input-checkbox
-     [data]= "[
-          { title: 'Cash Purchase?', name:'cash', class:[4,3,2], tip:'loan' }]"> 
+     [data]= "[{ title: 'Cash Purchase?', name:'cash', class:[4,3,2], tip:'loan' }]"> 
     </form-input-checkbox>
 
     <div *ngIf="!currentProperty.cash">
@@ -73,6 +70,10 @@
         [data]= "[
           { title: 'Points charged by lender', name:'loanPoints', class:[5,4,3], tip:'interest' },
            { title: 'Other fees from lender', name:'otherFee', class:[5,4,2], tip:'other' }]">
+      </form-input-text>
+
+      <form-input-text
+        [data]= "[{ title: 'Loan Terms', name:'loanTerm', class:[4,3,2], tip:'interest'}]">
       </form-input-text>
 
       <form-input-radio
@@ -126,6 +127,7 @@
   </form-step>
 
  
+ 
 
 
-</form-container>
+ </form-container>

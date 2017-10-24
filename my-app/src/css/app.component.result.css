@@ -6,13 +6,16 @@
 .table-container {
 	padding-left: 60px;
 	padding-right: 50px;
-	margin: auto;
+	margin: 25px auto 50px;
 }
 
 .padded-1 {
 	padding: 1em;
 }
 
+.padded-1 td {
+	padding-right: 5px;
+}
 .padded-bot{
 	padding-bottom: 1em;
 }
