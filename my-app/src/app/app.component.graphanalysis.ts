@@ -21,8 +21,8 @@ export class GraphAnalysisComponent {
 
 	view: any[];
 	view2:any[];
-	single: any[];
-	single2:any[];
+	expense: any[];
+	income:any[];
 	colorScheme: any;
 	showLabels = false;
   	explodeSlices = false;
@@ -41,27 +41,11 @@ export class GraphAnalysisComponent {
 		
 		this.getProperty();
 		this.view = [700, 300];
-
-		this.colorScheme = {domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']};
-		var data:any=[{
-			"name": "P&I",
-			"value": this.results.PI
-		}];
-
-		for ( var value in this.currentProperty.fixedExpenses ){
-	      var temp  =  {"name" : value,
-	      				"value": +this.currentProperty.fixedExpenses[value]};
-	      data.push(temp);
-	      console.log(data);
-	    };
-
-	    this.single = data;
-	    this.single2 = [{"name": "Rent",
-	    				"value": +this.currentProperty.totalMonthlyRent},
-						{"name": "Other",
-	    				"value": +this.currentProperty.otherMonthlyIncome}
-	    				]
+		this.colorScheme = {domain: ['#5AA454', '#C7B42C', '#011de8','#A10A28', '#AAAAAA',
+							'#c314c5','#14c5c5','#2ba901','#d6970b']};
 		
+	    this.expense = this.results.expenseGraph;
+	    this.income =this.results.incomeGraph;
 	}
 	
 	onSelect(event) {

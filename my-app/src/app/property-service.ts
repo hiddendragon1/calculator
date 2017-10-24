@@ -23,6 +23,10 @@ export class PropertyService {
     PROPERTY.fixedExpenses['HOAs'] =100;
     PROPERTY.fixedExpenses['Monthly Insurance'] =20;
 
+    PROPERTY.variableExpenses['Vacancy'] =2;
+    PROPERTY.variableExpenses['Repair Maintainance'] =1;
+    PROPERTY.variableExpenses['Property Management'] =2;
+    
     return PROPERTY;
   }
 
@@ -79,6 +83,10 @@ export class PropertyService {
     for ( var value in PROPERTY.fixedExpenses ){
       expense += +PROPERTY.fixedExpenses[value];
     };
+
+    for( var value in PROPERTY.variableExpenses){
+      expense += +PROPERTY.variableExpenses[value]/100 * this.result.monthlyIncome;
+    }
    
     return expense;
   }
@@ -132,8 +140,43 @@ export class PropertyService {
       data.push(temp);
     }
     
-  return data;
+    return data;
 
+  }
+
+  setExpenseGraph(): any {
+    var data:any=[{
+      "name": "P&I",
+      "value": this.result.PI
+    }];
+
+    for ( var value in PROPERTY.fixedExpenses ){
+      if( +PROPERTY.fixedExpenses[value] > 0) {
+        var temp  =  {"name" : value,
+                      "value": +PROPERTY.fixedExpenses[value]};
+        data.push(temp);
+      }
+    }
+
+    for ( var value in PROPERTY.variableExpenses) {
+      if( +PROPERTY.variableExpenses[value] > 0) {
+        var temp = {"name":value, 
+                    "value": +PROPERTY.variableExpenses[value]/100 * this.result.monthlyIncome}
+        data.push(temp);
+      }
+    }
+
+    return data;
+
+  }
+
+  setIncomeGraph():any{
+    return [{"name": "Rent",
+              "value": +PROPERTY.totalMonthlyRent},
+            {"name": "Other",
+              "value": +PROPERTY.otherMonthlyIncome}
+              ];
+    
   }
 
   calResults() : void {
@@ -160,17 +203,20 @@ export class PropertyService {
     this.result.monthlyCashFlow = this.result.monthlyIncome - this.result.monthlyExpense;
     this.result.cashonCashROI = this.calCashonCashROI(this.result.monthlyCashFlow * 12);
     this.result.NOI = this.result.monthlyIncome - this.result.monthlyOperating;
-    //filter out the years we want to display
-    this.result.years = this.calYears().filter( function(value,index){
-      return [0,1,2,4,9,19,29].includes(index);
-    });;
-
     //if wrap fee into loan
     if(PROPERTY.loanFee.value == 'W'){
       this.result.loanAmount += this.result.loanPoints;
       this.result.totalCash -= this.result.loanPoints;
+      this.result.PI = this.calPI();
     }
 
+    //calculate year last and filter out the years we want to display
+    this.result.years = this.calYears().filter( function(value,index){
+      return [0,1,2,4,9,19,29].includes(index);
+    });;
+
+    this.result.expenseGraph = this.setExpenseGraph();
+    this.result.incomeGraph = this.setIncomeGraph();
     console.log(this.result);
   }
 }

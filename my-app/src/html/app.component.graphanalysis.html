@@ -8,7 +8,7 @@
     <ngx-charts-pie-grid
       [view]="view"
       [scheme]="colorScheme"
-      [results]="single"
+      [results]="results.expenseGraph"
       (select)="onSelect($event)">
     </ngx-charts-pie-grid>
   
@@ -22,7 +22,7 @@
       <ngx-charts-pie-chart
       [view]="view"
       [scheme]="colorScheme"
-      [results]="single2"
+      [results]="income"
       [legend]="showLegend"
       [explodeSlices]="explodeSlices"
       [labels]="showLabels"
