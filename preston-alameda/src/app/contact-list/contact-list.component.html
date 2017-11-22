@@ -1,0 +1,55 @@
+<div class="add-new">
+  <label>Full Name:
+    <input #name />
+  </label>
+  <label> Provider:
+    <input #provider />
+  </label>
+  <label>Email:
+    <input #email />
+  </label>
+  <label>Phone  :
+    <input #phone />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(name.value,provider.value,email.value,phone.value); 
+          name.value='';provider.value='';email.value='';phone.value='';"> add </button>
+</div>
+
+<table class="table-container">
+  <tbody>
+    <tr>
+      <th>Id</th>
+      <th>Provider</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <tr *ngFor="let contact of contacts">
+      <td>
+        {{contact.id}}
+      </td>
+      <td>
+        {{contact.provider}}
+      </td>
+      <td>
+        {{contact.name}}
+      </td>
+      <td>
+        {{contact.email}}
+      </td>
+      <td>
+        {{contact.phone}}
+      </td>
+      <td>
+        <a routerLink="/contact/{{contact.id}}"><button class="edit">Edit</button></a>
+      </td>
+      <td>
+        <button class="delete">X</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

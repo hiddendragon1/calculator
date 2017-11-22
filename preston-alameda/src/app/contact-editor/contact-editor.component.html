@@ -1,0 +1,28 @@
+<div *ngIf="contact" class="details">
+
+<h3>{{ contact.name | uppercase }} Details</h3>
+<div><span>id: </span>{{contact.id}}</div>
+
+<div>
+	<label>Provider:
+      <input [(ngModel)]="contact.provider" placeholder="provider"/>
+    </label>
+</div>
+<div>
+	<label>name:
+      <input [(ngModel)]="contact.name" placeholder="name"/>
+    </label>
+</div>
+<div>
+	<label>Email:
+      <input [(ngModel)]="contact.email" placeholder="provider"/>
+    </label>
+</div>
+<div>
+	<label>Phone:
+      <input [(ngModel)]="contact.phone" placeholder="provider"/>
+    </label>
+</div>
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>
