@@ -5,7 +5,7 @@
     <strong>Total Operating expenses: {{results.monthlyOperating|currency:'USD':true}}</strong>
     <br>
     <strong>Mortgage expenses: {{results.PI|currency:'USD':true}}</strong>
-    <ngx-charts-pie-grid
+    <ngx-charts-pie-grid class="chart"
       [view]="view"
       [scheme]="colorScheme"
       [results]="results.expenseGraph"

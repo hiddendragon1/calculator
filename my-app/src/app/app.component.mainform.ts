@@ -21,8 +21,8 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
       height: 0,
       opacity: 0
     })),
-    transition('b => a', animate('2000ms ease-in')),
-    transition('a => b', animate('2000ms ease-out'))
+    transition('a => b', animate('2000ms ease-in')),
+    transition('b => a', animate('2000ms ease-out'))
   ])
 ]
 
@@ -32,7 +32,7 @@ export class MainFormComponent {
 
 	private currentProperty: Property;
 	private isCompleted: boolean= false;
-	private is_anything: string= 'false';
+	public is_anything: string = "b";
 
 	constructor(private propertyService: PropertyService) { }
 
@@ -52,15 +52,17 @@ export class MainFormComponent {
 	}
 
 	public formChange(event){
-		console.log("form changed");
+		
 		this.isCompleted=false;
-		this.is_anything= 'b';
+		this.is_anything= "b";
+		console.log("form changed   " + this.is_anything );
 	}
 
 	public completed(event) {
-		console.log("completed form",event);
-		this.is_anything = 'a';
+		
+		this.is_anything = "a";
 		this.isCompleted = true;
+		console.log("completed form   " + this.is_anything);
 		this.propertyService.getResults();
 	}
 

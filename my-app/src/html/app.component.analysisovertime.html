@@ -49,6 +49,36 @@
 					{{year.cashROI|percent:'1.0-2'}}
 				</td>
 			</tr>
+			<tr>
+				<td>Property Value</td>
+				<td class="align-right" *ngFor="let year of results.years">
+					{{year.propertyValue|currency:'USD':true}}
+				</td>
+			</tr>
+			<tr>
+				<td>Equity</td>
+				<td class="align-right" *ngFor="let year of results.years">
+					{{year.equity|currency:'USD':true}}
+				</td>
+			</tr>
+			<tr>
+				<td>Loan Balance</td>
+				<td class="align-right" *ngFor="let year of results.years">
+					{{year.loanBalance|currency:'USD':true}}
+				</td>
+			</tr>
+			<tr>
+				<td>Total Profit If sold</td>
+				<td class="align-right" *ngFor="let year of results.years">
+					{{year.totalProfit|currency:'USD':true}}
+				</td>
+			</tr>
+			<tr>
+				<td>Total Return</td>
+				<td class="align-right" *ngFor="let year of results.years">
+					{{year.totalReturn| percent:'1.0-2'}}
+				</td>
+			</tr>
 		</tbody>
 	</table>
 </div>

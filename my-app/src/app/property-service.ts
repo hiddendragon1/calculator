@@ -100,7 +100,12 @@ export class PropertyService {
     var tvAnnualExpense= this.result.monthlyExpense * 12;
     var tvAnnualCashFlow= this.result.monthlyCashFlow * 12;
     var tvCashROI = this.result.cashonCashROI;
-    
+    var tvPropertyValue = +PROPERTY.afterRepairValue;
+    var tvEquity =0 ;
+    var tvLoanBalance = this.result.loanAmount - tvMortgageExpense;
+    var tvtotalProfit =0;
+    var tvtotalReturn=0;
+
     //set data for the first year
     var data:any =[{annualIncome: tvAnnualIncome, 
                     annualExpense: tvAnnualExpense,
@@ -108,11 +113,11 @@ export class PropertyService {
                     annualOperating: tvOperatingExpense,
                     annualCashflow: tvAnnualCashFlow,
                     cashROI: tvCashROI,
-                    propertyValue: 0,
-                    equity: 0,
-                    loanBalance: 0,
-                    totalProfit:0,
-                    totalReturn:0
+                    propertyValue: tvPropertyValue,
+                    equity: tvEquity,
+                    loanBalance: tvLoanBalance,
+                    totalProfit: tvtotalProfit,
+                    totalReturn: tvtotalReturn
               }];
     
     //loop to loan term to calculate every year
@@ -122,6 +127,11 @@ export class PropertyService {
       tvAnnualIncome += tvAnnualIncome * (+PROPERTY.futureAssumption['Income Growth']/100);
       tvAnnualCashFlow = tvAnnualIncome - tvAnnualExpense;
       tvCashROI = this.calCashonCashROI(tvAnnualCashFlow);
+      tvPropertyValue += tvPropertyValue * (+PROPERTY.futureAssumption['PV Growth']/100);
+      tvEquity = 0;
+      tvLoanBalance -= tvMortgageExpense;
+      tvtotalProfit =0;
+      tvtotalReturn=0;
 
       var temp = {annualIncome:  tvAnnualIncome,
                   annualExpense: tvAnnualExpense,
@@ -129,11 +139,11 @@ export class PropertyService {
                   annualOperating: tvOperatingExpense,
                   annualCashflow: tvAnnualCashFlow,
                   cashROI: tvCashROI,
-                  propertyValue: 0,
-                  equity: 0,
-                  loanBalance: 0,
-                  totalProfit:0,
-                  totalReturn:0
+                  propertyValue: tvPropertyValue,
+                  equity: tvEquity,
+                  loanBalance: tvLoanBalance,
+                  totalProfit: tvtotalProfit,
+                  totalReturn: tvtotalReturn
                 };
 
       //push yearly data
